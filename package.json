@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-  "dev:open": "cmd /c \"start http://localhost:8080 && vite --host 127.0.0.1 --port 8080\"",
+  "dev:open": "node ./scripts/dev-open.js",
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
