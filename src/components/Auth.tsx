@@ -30,8 +30,9 @@ export const Auth = () => {
             variables: {
               default: {
                 colors: {
-                  brand: 'hsl(221 83% 53%)',
-                  brandAccent: 'hsl(262 83% 58%)',
+                  // use CSS variables so the auth UI follows the app theme
+                  brand: 'hsl(var(--primary))',
+                  brandAccent: 'hsl(var(--secondary))',
                 },
               },
             },
