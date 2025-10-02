@@ -44,7 +44,7 @@ All colors MUST be HSL.
     --radius: 0.75rem;
 
     /* Scientific Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%), hsl(262 83% 58%));
+  --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%), hsl(262 83% 48%));
     --gradient-accent: linear-gradient(135deg, hsl(187 85% 53%), hsl(221 83% 53%));
     --gradient-subtle: linear-gradient(180deg, hsl(220 25% 97%), hsl(220 25% 99%));
     
@@ -81,7 +81,8 @@ All colors MUST be HSL.
     --primary-foreground: 0 0% 100%;
     --primary-glow: 221 83% 65%;
 
-    --secondary: 262 83% 58%;
+  /* Slightly deeper purple to stand out on dark backgrounds */
+  --secondary: 262 83% 48%;
     --secondary-foreground: 0 0% 100%;
 
     --accent: 187 85% 53%;

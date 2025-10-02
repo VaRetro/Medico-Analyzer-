@@ -8,51 +8,49 @@
 
 There are several ways of editing your application.
 
-**Use Lovable**
+# Corpus Quest AI
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d3c5a4be-f7b6-41cb-8ec3-f8a30a9b12bb) and start prompting.
+A Vite + React research platform. This README explains how to run and deploy the site WITHOUT using the Lovable website — just clone the repo and follow the steps below.
 
-Changes made via Lovable will be committed automatically to this repo.
+## Quick start (run locally, no Lovable required)
 
-**Use your preferred IDE**
+Prerequisites:
+- Node.js 18+ and npm (or yarn/pnpm)
+- Git
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Clone and run locally:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Replace the placeholder repo URL with this repository if you cloned it directly:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```bash
+git clone https://github.com/VaRetro/corpus-quest-ai.git
+cd corpus-quest-ai
+```
+npm ci
+npm run dev
+```
 
-**Use GitHub Codespaces**
+Open the URL printed by Vite (commonly `http://127.0.0.1:8080` or `http://localhost:5173`).
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+If you prefer a single command on Windows that also opens your browser:
 
-## What technologies are used for this project?
+```cmd
+npm run dev:open
+```
 
-This project is built with:
+## Edit locally (your IDE)
+
+Open the project in VS Code or your preferred editor. The project uses TypeScript + React + Tailwind. Typical workflow:
+
+1. Install dependencies: `npm ci`
+2. Start dev server: `npm run dev`
+3. Make changes, then commit and push to your repository.
+
+## Technologies used
 
 - Vite
 - TypeScript
@@ -60,9 +58,129 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Deploy options (no Lovable required)
 
-Simply open [Lovable](https://lovable.dev/projects/d3c5a4be-f7b6-41cb-8ec3-f8a30a9b12bb) and click on Share -> Publish.
+- GitHub Pages: This repo includes a GitHub Actions workflow that builds and publishes `dist` to `gh-pages` on pushes to `main`.
+- Vercel / Netlify: Recommended for one-click deployments and automatic previews. Both providers auto-detect Vite projects.
+
+### One-click deploy (Vercel)
+
+You can add a Vercel button to this README so others can deploy with one click. Example (replace `<PROJECT>` with your Vercel project if desired):
+
+```markdown
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/VaRetro/corpus-quest-ai)
+```
+
+### Docker (run anywhere with Docker)
+
+Build and run the container locally:
+
+```bash
+docker build -t corpus-quest-ai .
+docker run --rm -p 8080:80 corpus-quest-ai
+# or with docker-compose
+docker-compose up --build
+```
+
+The app will be available at `http://localhost:8080`.
+
+### .env.example
+
+Copy `.env.example` to `.env` or `.env.local` and fill in any keys you require before running locally or deploying. Do NOT commit real secrets to the repo.
+
+## Notes
+
+- If the app needs runtime keys (Supabase, AI gateway), set them in a `.env` file locally or in your hosting provider's environment settings.
+- For large files or production OCR, consider server-side extraction rather than client-side processing.
+### Run locally (anyone with the repo link)
+
+Clone and run locally:
+
+```bash
+git clone https://github.com/<owner>/<repo>.git
+cd <repo>
+npm ci
+npm run dev
+```
+
+Open the printed local URL in your browser (usually `http://127.0.0.1:8080` or `http://localhost:5173`).
+
+If you want a one-click deploy, use Vercel (recommended) — it will provide a live URL instantly after import.
+
+## Run this website on any machine (step-by-step)
+
+Follow these steps to run the site locally on Windows, macOS, or Linux. These instructions assume you have Git and Node.js installed (recommended Node 18+).
+
+1) Clone the repository
+
+```bash
+git clone https://github.com/<owner>/<repo>.git
+cd <repo>
+```
+
+2) Install dependencies
+
+Use npm (recommended) to install exact packages from lockfile:
+
+```bash
+npm ci
+```
+
+If you prefer yarn or pnpm, run `yarn` or `pnpm install` instead.
+
+3) Configure environment variables (optional)
+
+If the app needs runtime keys (Supabase, AI gateway), create a `.env` or `.env.local` file in the project root with values prefixed by `VITE_` for client-side variables. Example:
+
+```text
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_PUBLISHABLE_KEY=public-anon-key
+# Optional server secrets (use provider secrets when deploying)
+LOVABLE_API_KEY=sk_xxx
+```
+
+4) Start the dev server
+
+Platform-agnostic (recommended):
+
+```bash
+npm run dev
+```
+
+Windows (cmd.exe) — the project includes a helper that opens your browser:
+
+```cmd
+npm run dev:open
+```
+
+5) Open the site
+
+Open the URL printed by Vite in your browser, e.g. `http://127.0.0.1:8080/` or `http://localhost:5173`.
+
+Troubleshooting
+- Port in use: if the dev server reports "Port 8080 is in use", either kill the process using the port or start on another port:
+
+```cmd
+set VITE_PORT=5173 && npm run dev
+# PowerShell: $env:VITE_PORT=5173; npm run dev
+```
+
+- Firewall / LAN access: to access the app from another device on your LAN, open port 8080 in your firewall or start Vite bound to 0.0.0.0 and allow the port in firewall settings.
+
+- Build errors related to Tailwind directives (`@tailwind`, `@apply`): these are processed at build time by PostCSS; ignore editor lint warnings and run `npm run build` to verify.
+
+Run a production build
+
+```bash
+npm run build
+npm run preview   # serve the built dist locally for a quick smoke test
+```
+
+Alternative: run in Docker
+
+If you prefer containerized runs, create a simple Dockerfile that installs Node, copies the repo, runs `npm ci`, and `npm run build`, then serves `dist` with a small static server.
+
+Want me to add a one-click "Deploy to Vercel" badge and a Dockerfile? I can add either or both.
 
 ## Can I connect a custom domain to my Lovable project?
 
