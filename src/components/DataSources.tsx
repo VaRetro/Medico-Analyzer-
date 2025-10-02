@@ -8,7 +8,6 @@ import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Plus, Trash2, Link as LinkIcon, Database, FlaskConical, FileText, Building } from "lucide-react";
-import { cn } from "@/lib/utils";
 import {
   Select,
   SelectContent,
@@ -107,8 +106,8 @@ export const DataSources = () => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold motion-safe:animate-slide-in-left">Connected Data Sources</h2>
-          <p className="text-muted-foreground motion-safe:animate-fade-up">Manage your research data connections</p>
+          <h2 className="text-2xl font-bold">Connected Data Sources</h2>
+          <p className="text-muted-foreground">Manage your research data connections</p>
         </div>
         <Button
           onClick={() => setShowAddForm(!showAddForm)}
@@ -120,7 +119,7 @@ export const DataSources = () => {
       </div>
 
       {showAddForm && (
-        <Card className="p-6 shadow-elevated motion-safe:animate-slide-in-left">
+        <Card className="p-6 shadow-elevated animate-scale-in">
           <h3 className="text-lg font-semibold mb-4">Add New Data Source</h3>
           <div className="space-y-4">
             <div className="space-y-2">
@@ -191,10 +190,10 @@ export const DataSources = () => {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        {sources?.map((source, idx) => {
+        {sources?.map((source) => {
           const SourceIcon = getSourceIcon(source.type);
           return (
-            <Card key={source.id} className={cn("p-4 shadow-card hover:shadow-elevated transition-shadow motion-safe:animate-slide-in-left", "anim-delay")} style={{ ['--anim-delay' as any]: `${idx * 40}ms` }}>
+            <Card key={source.id} className="p-4 shadow-card hover:shadow-elevated transition-shadow">
               <div className="flex items-start justify-between mb-3">
                 <div className="flex items-center gap-3">
                   <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${getSourceColor(source.type)} flex items-center justify-center shadow-glow`}>

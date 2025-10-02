@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useQuery } from "@tanstack/react-query";
 import { FileText, Download, Calendar, TrendingUp, BookOpen, Globe } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 
 const searchTypeIcons = {
@@ -42,12 +41,12 @@ export const ReportArchive = () => {
 
       {!isLoading && reports && reports.length > 0 ? (
         <div className="grid grid-cols-1 gap-4">
-          {reports.map((report, idx) => {
+          {reports.map((report) => {
             const searchQuery = report.search_queries as any;
             const SearchTypeIcon = searchTypeIcons[searchQuery?.search_type as keyof typeof searchTypeIcons] || FileText;
             
             return (
-              <Card key={report.id} className={cn("p-6 shadow-card hover:shadow-elevated transition-all duration-300 motion-safe:animate-slide-in-left", "anim-delay")} style={{ ['--anim-delay' as any]: `${idx * 45}ms` }}>
+              <Card key={report.id} className="p-6 shadow-card hover:shadow-elevated transition-all duration-300">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-start gap-4 flex-1">
                     <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-accent to-teal-600 flex items-center justify-center shadow-glow">
@@ -96,7 +95,7 @@ export const ReportArchive = () => {
           })}
         </div>
       ) : (
-        <Card className="p-12 text-center shadow-card shimmer-layer">
+        <Card className="p-12 text-center shadow-card">
           <FileText className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
           <h3 className="text-lg font-semibold mb-2">No reports yet</h3>
           <p className="text-muted-foreground">

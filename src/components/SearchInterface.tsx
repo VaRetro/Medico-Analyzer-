@@ -6,7 +6,6 @@ import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Globe, TrendingUp, BookOpen, Loader2, Sparkles, FileText } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 
 type SearchType = "web_search" | "market_analysis" | "journal_summary";
@@ -119,25 +118,21 @@ export const SearchInterface = () => {
   return (
     <div className="space-y-6">
       {/* Search Type Selection */}
-      <Card className="p-6 shadow-elevated motion-safe:animate-slide-in-left">
-        <h2 className="text-lg font-semibold mb-4 flex items-center gap-2 motion-safe:animate-slide-in-left">
-          <Sparkles className="w-5 h-5 text-primary motion-safe:animate-float-slow" />
+      <Card className="p-6 shadow-elevated">
+        <h2 className="text-lg font-semibold mb-4 flex items-center gap-2">
+          <Sparkles className="w-5 h-5 text-primary" />
           Select Research Mode
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {searchTypes.map((type, idx) => (
+          {searchTypes.map((type) => (
             <button
               key={type.id}
               onClick={() => setSelectedType(type.id)}
-              style={{ ['--anim-delay' as any]: `${idx * 60}ms` }}
-              className={cn(
-                `p-4 rounded-lg border-2 transition-all duration-300 text-left ${
-                  selectedType === type.id
-                    ? "border-primary bg-primary/5 shadow-card"
-                    : "border-border hover:border-primary/50 hover:bg-muted/50"
-                }`,
-                "anim-delay",
-              )}
+              className={`p-4 rounded-lg border-2 transition-all duration-300 text-left ${
+                selectedType === type.id
+                  ? "border-primary bg-primary/5 shadow-card"
+                  : "border-border hover:border-primary/50 hover:bg-muted/50"
+              }`}
             >
               <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${type.color} flex items-center justify-center mb-3 shadow-glow`}>
                 <type.icon className="w-5 h-5 text-white" />

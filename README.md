@@ -27,8 +27,8 @@ npm run dev
 Replace the placeholder repo URL with this repository if you cloned it directly:
 
 ```bash
-git clone https://github.com/VaRetro/medico-analyzer.git
-cd medico-analyzer
+git clone https://github.com/VaRetro/corpus-quest-ai.git
+cd corpus-quest-ai
 ```
 npm ci
 npm run dev
@@ -68,7 +68,7 @@ Open the project in VS Code or your preferred editor. The project uses TypeScrip
 You can add a Vercel button to this README so others can deploy with one click. Example (replace `<PROJECT>` with your Vercel project if desired):
 
 ```markdown
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/VaRetro/medico-analyzer)
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/VaRetro/corpus-quest-ai)
 ```
 
 ### Docker (run anywhere with Docker)
@@ -76,8 +76,8 @@ You can add a Vercel button to this README so others can deploy with one click. 
 Build and run the container locally:
 
 ```bash
-docker build -t medico-analyzer .
-docker run --rm -p 8080:80 medico-analyzer
+docker build -t corpus-quest-ai .
+docker run --rm -p 8080:80 corpus-quest-ai
 # or with docker-compose
 docker-compose up --build
 ```
